@@ -3,6 +3,7 @@
 # This is my login and register page. When I click on 'Register' or 'Login' under the login button, phrases like 'Don't have an account? Register' and 'Already have an account? Signin' will toggle the form.
 
 ![Login page](https://github.com/Shishossain37/task-management-frontend/assets/124690376/62a3dc5c-128f-49ba-97b0-678ce4c9bf31)
+
 ![Reigister Page](https://github.com/Shishossain37/task-management-frontend/assets/124690376/619cc386-9705-41eb-8e4e-c9a28f4568c0)
 
 # If Admin login this page will show
