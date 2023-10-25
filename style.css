@@ -1,0 +1,285 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 100vh;
+}
+
+header {
+  background-color: #009688;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.card {
+  background-color: #fff;
+  width: 50%;
+  margin: 5%auto;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  color: #333;
+}
+
+h1 {
+  color: #000;
+  font-size: 28px;
+  margin: 0 0 1.2em 0;
+}
+
+#taskForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.task-input {
+  display: flex;
+  align-items: center;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 15px 12px;
+  margin-right: 10px;
+  border: none;
+  background-color: #f2f2f2;
+  color: #333;
+  border-radius: 5px 0 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+#taskInput::placeholder {
+  color: #777;
+}
+
+#taskInput:focus {
+  outline: none;
+  background-color: #e6e6e6;
+}
+
+button[type="submit"] {
+  background-color: #4005f0;
+  color: #fff;
+  padding: 15px 7px;
+  border: none;
+  border-radius: 0 7px 7px 0;
+  margin-left: -15px;
+  cursor: pointer;
+  width: 5rem;
+}
+
+
+
+#taskContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5% auto;
+  flex-direction: row;
+  width: 130vh;
+  padding: 1%;
+}
+
+.taskCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1%;
+  width: 100%;
+  margin: 1%;
+  border-radius: 1%;
+}
+
+.taskCard.completed {
+  background: #03e75a;
+  text-transform: capitalize;
+}
+
+.taskCard.pending {
+  background: #ea0326;
+}
+
+.taskCard:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.taskCard p {
+  margin: 0;
+  color: #fff;
+  width: 15%;
+}
+
+.taskCard .status {
+  margin-top: 10px;
+  font-size: 14px;
+  font-size: 1.1em;
+  font-weight: 100;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* =========================== */
+/*    Task button styling      */
+/* =========================== */
+
+.button-box {
+  border-radius: 20px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.green {
+  color: #4ec07d;
+}
+
+.red {
+  color: #e96075;
+}
+
+.button-box span {
+  font-size: 0.9em;
+    font-weight: 100;
+}
+
+/* =========================== */
+/* Confirmation popup styling */
+/* =========================== */
+
+.overlay {
+  position: relative;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.confirm {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  min-width: 280px;
+  max-width: 500px;
+  height: auto;
+  background: #e2e2e2;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid white;
+  animation: fade 0.5s ease 1 forwards;
+}
+
+.confirm h1 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 1.5rem 1rem 0.5rem;
+}
+
+.confirm p {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 2rem 4.5rem;
+}
+
+.confirm button {
+  background: transparent;
+  border: none;
+  color: #1678e5;
+  height: 3rem;
+  font-size: 1rem;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.confirm button:nth-of-type(1) {
+  border-top: 1px solid #b4b4b4;
+  border-right: 1px solid #b4b4b4;
+  left: 0;
+  border-radius: 0 0 0 10px;
+}
+
+.confirm button:nth-of-type(2) {
+  border-top: 1px solid #b4b4b4;
+  right: 0;
+  border-radius: 0 0 10px 0;
+}
+
+.confirm button:focus,
+.confirm button:hover {
+  font-weight: bold;
+  background: #efefef;
+}
+
+.confirm button:active {
+  background: #d6d6d6;
+}
+
+/* The Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
