@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userTableBody = document.getElementById('userTableBody');
 
     // Fetch users from the backend
-    fetch('https://task-management-backend-is6g.onrender.com/admin/get', {
+    fetch('http://localhost:5000/admin/get', {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token') // Assuming you store the JWT token in localStorage
         }
@@ -40,31 +40,13 @@ function handleLogout() {
 }
 
 
-function editUser(userId) {
-    // Fetch user details by ID from the backend
-    fetch(`https://task-management-backend-is6g.onrender.com/admin/update/${userId}`, {
-        method: 'PUT',
-        headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('token') // Assuming you store the JWT token in localStorage
-        }
-    })
-        .then(response => response.json())
-        .then(user => {
-            // Populate a form or modal with user details for editing
-            // For simplicity, let's log the user details to the console
-            console.log('Editing user:', user);
-        })
-        .catch(error => {
-            console.error('Error fetching user details for editing:', error);
-        });
-}
 
 
 function deleteUser(userId) {
     // Confirm deletion with the user
     if (confirm('Are you sure you want to delete this user?')) {
         // Send a DELETE request to the backend API
-        fetch(`https://task-management-backend-is6g.onrender.com/admin/delete/${userId}`, {
+        fetch(`http://localhost:5000/admin/delete/${userId}`, {
             method: 'DELETE',
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('token') // Assuming you store the JWT token in localStorage
@@ -74,7 +56,7 @@ function deleteUser(userId) {
             .then(data => {
                 // console.log(document.getElementById(userId));
                 console.log(data.message); // Log the delete success message
-                
+                window.location.reload();
             })
             .catch(error => {
                 console.error('Error deleting user:', error);
@@ -125,7 +107,7 @@ document.getElementById('editUserForm').addEventListener('submit', function (eve
     };
 
     // Send a PUT request to update user details
-    fetch(`https://task-management-backend-is6g.onrender.com/admin/update/${userId}`, {
+ fetch(`http://localhost:5000/admin/update/${userId}`, {
         method: 'PUT', // Use 'PATCH' if you want to perform a partial update
         headers: {
             'Content-Type': 'application/json',
@@ -136,12 +118,12 @@ document.getElementById('editUserForm').addEventListener('submit', function (eve
         .then(response => {
             if (response.ok) {
                 console.log('User details updated successfully.');
-                // Optionally, update the user details in the UI if needed
             } else {
                 console.error('Failed to update user details.');
             }
             // Close the modal regardless of the response (success or error)
             closeEditUserModal();
+            window.location.reload();
         })
         .catch(error => {
             console.error('Error updating user details:', error);

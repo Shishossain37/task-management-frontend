@@ -17,7 +17,7 @@ function handleLogout() {
 
 async function fetchTasks() {
     try {
-        const response = await fetch(`https://task-management-backend-is6g.onrender.com/task/get/`, {
+        const response = await fetch(`http://localhost:5000/task/get/`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -41,7 +41,7 @@ async function handleFormSubmit(event) {
 
     if (taskText !== '') {
         try {
-            const response = await fetch('https://task-management-backend-is6g.onrender.com/task/create', {
+            const response = await fetch('http://localhost:5000/task/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ async function updateTask(index) {
 
 
     try {
-        const response = await fetch(`https://task-management-backend-is6g.onrender.com/task/update/${taskId}`, {
+        const response = await fetch(`http://localhost:5000/task/update/${taskId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ async function deleteTask(index) {
     const taskId = tasks[index]._id;
 
     try {
-        const response = await fetch(`https://task-management-backend-is6g.onrender.com/task/delete/${taskId}`, {
+        const response = await fetch(`http://localhost:5000/task/delete/${taskId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`

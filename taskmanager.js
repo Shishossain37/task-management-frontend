@@ -17,7 +17,7 @@ function handleLogout() {
 // Fetch task when admin clicked on view Details
 async function fetchTasks() {
     try {
-        const response = await fetch(`https://task-management-backend-is6g.onrender.com/task/get/${userId}`);
+        const response = await fetch(`http://localhost:5000/task/get/${userId}`);
         const tasksData = await response.json();
         return tasksData;
     } catch (error) {
@@ -30,7 +30,7 @@ async function updateTask(index) {
     const taskId = tasks[index]._id;
 
     try {
-        const response = await fetch(`https://task-management-backend-is6g.onrender.com/task/update/${userId}/${taskId}`, {
+        const response = await fetch(`http://localhost:5000/task/update/${userId}/${taskId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ async function deleteTask(index) {
     const taskId = tasks[index]._id;
 
     try {
-        const response = await fetch(`https://task-management-backend-is6g.onrender.com/task/delete/${userId}/${taskId}`, {
+        const response = await fetch(`http://localhost:5000/task/delete/${userId}/${taskId}`, {
             method: 'DELETE',
 
         });
@@ -106,7 +106,7 @@ function renderTasks(tasks) {
         deleteButton.classList.add("button-box");
         const delBtnContentEl = document.createElement("span");
         delBtnContentEl.classList.add("red");
-        delBtnContentEl.innerText = 'Delete';
+        delBtnContentEl.innerText = 'Reject';
         deleteButton.appendChild(delBtnContentEl);
         deleteButton.addEventListener('click', () => {
             indexToBeDeleted = index;
@@ -148,7 +148,7 @@ async function initialize() {
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('userId');
 console.log(userId);
-fetch(`https://task-management-backend-is6g.onrender.com/task/get/${userId}`,)
+fetch(`http://localhost:5000/task/get/${userId}`,)
 
     .then(response => response.json())
     .then(tasks => {

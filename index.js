@@ -16,7 +16,7 @@ async function handleLoginFormSubmit(event) {
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('https://task-management-backend-is6g.onrender.com/user/signin', {
+        const response = await fetch('http://localhost:5000/user/signin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ async function handleRegisterFormSubmit(event) {
     const password = document.getElementById('regPassword').value;
 
     try {
-        const response = await fetch('https://task-management-backend-is6g.onrender.com/user/register', {
+        const response = await fetch('http://localhost:5000/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
